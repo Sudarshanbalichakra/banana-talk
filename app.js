@@ -1,9 +1,9 @@
 
 var btnTranslate=document.querySelector("#btn-translate");
 var txtInput=document.querySelector("#txt-input");
-var oupPut=document.querySelector("#ouput")
+var outPutDiv=document.querySelector("#output")
 
- var serverURL= "https://api.funtranslations.com/translate/"
+ var serverURL= "https://api.funtranslations.com/translate/pirate.json"
 
  function getTranslationURL(text){
     return serverURL + "?" + "text" + text
@@ -14,17 +14,17 @@ var oupPut=document.querySelector("#ouput")
     alert(" somethung went wrong");
  }
 
-function clickHandler(){
+function clickHandler(input){
     var inputText=txtInput.Value;
 
     fetch(getTranslationURL(inputText))
-    .then(response => response.json())
-    .then(json=> {
-        var translatedURL=json.contents.translated;
-        outputDiv.innerText=translatedText;
-    })
-    .catch(errorHandler)
-}
+        .then(response => response.json())
+        .then(json=> {
+            var translatedText=json.contents.translated;
+            outputDiv.innerText=translatedText;
+             })
+        .catch(errorHandler)
+};
 
 
 btnTranslate.addEventListener("click",clickHandler)
