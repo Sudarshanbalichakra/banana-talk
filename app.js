@@ -11,9 +11,7 @@ function getTransaltionURL(text){
 function clickHandler(){
     var inputText=textInput.value;
 
-            var translatedText = json.contents.translated
-            outputDiv.innerText = translatedText //output
-        
+    fetch(getTransaltionURL(inputText))
         .then(response=>response.json())
         .then(json=>{
             let translatedText=json.contents.translated;
